@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContactHub - Smart Contact Manager</title>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/all.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="min-vh-100 position-relative">
+
+  <div class="bg-styles overflow-hidden w-100 top-0 bottom-0 position-fixed h-100">
+    <div class="position-absolute bg-style-1 rounded-circle opacity-50 bg-blue-100"></div>
+    <div class="position-absolute bg-style-2 rounded-circle bg-violet-100"></div>
+    <div class="position-absolute bg-style-3 rounded-circle opacity-50 bg-emerald-100"></div>
+  </div>
+
+  <header class="position-sticky top-0 z-2 border-bottom">
+    <nav class="navbar navbar-expand-lg p-0">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items w-100">
+          <div class="navbar-brand flex-center">
+            <div class="icon flex-center text-white text-size-lg rounded-12">
+              <i class="fa-solid fa-address-book"></i>
+            </div>
+            <div class="nav-title">
+              <h1 class="fw-bold color-gray-900 text-size-xl m-0">
+                Contact<span class="color-violet-600">Hub</span>
+              </h1>
+              <p class="text-size-xs color-gray-500 fw-medium d-none d-sm-block m-0">
+                Smart Contact Manager
+              </p>
+            </div>
+          </div>
+          <div class="right-navbar justify-content-end d-flex">
+            <div class="d-flex align-items-center buttons-container">
+              <button onclick="showFormFun()"
+                class="add-contact-btn fw-semibold text-white text-size-md rounded-12 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                <span class="d-none d-sm-inline-block add-contact-span">Add Contact</span>
+                <span class="d-inline d-sm-none">Add</span>
+              </button>
+              <button
+                class="notification-icon p-0 d-none rounded-12 bg-transparent color-gray-500 d-sm-flex flex-center">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+              <button class="setting-icon d-none p-0 rounded-12 bg-transparent color-gray-500 d-sm-flex flex-center">
+                <i class="fa-solid fa-gear"></i>
+              </button>
+
+              <div class="profile rounded-12 overflow-hidden bg-gray-100">
+                <img class="w-100 rounded-12 h-100 object-fit-cover" src="images/avatar1.png" alt="user 1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="analysis">
+        <h2 class="visually-hidden">Analysis</h2>
+        <div class="row g-3">
+          <div class="col-md-4 col-sm-6">
+            <div class="inner total d-flex align-items-center border border-gray-100 rounded-4 bg-white">
+              <div class="icon flex-center rounded-12 text-white me-3">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <p class="color-gray-500 fw-medium text-uppercase m-0 text-size-sm">Total</p>
+                <span id="totalContactsCount" class="text-size-2xl color-gray-900 fw-bold">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="inner fav d-flex align-items-center border border-gray-100 rounded-4 bg-white">
+              <div class="icon flex-center rounded-12 text-white me-3">
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div>
+                <p class="color-gray-500 fw-medium text-uppercase m-0 text-size-sm">Favorites</p>
+                <span id="favContactsCount" class="text-size-2xl color-gray-900 fw-bold">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="inner emergency d-flex align-items-center border border-gray-100 rounded-4 bg-white">
+              <div class="icon flex-center rounded-12 text-white me-3">
+                <i class="fa-solid fa-heart-pulse"></i>
+              </div>
+              <div>
+                <p class="color-gray-500 fw-medium text-uppercase m-0 text-size-sm">Emergency</p>
+                <span id="emergencyContactsCount" class="text-size-2xl color-gray-900 fw-bold">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-contact">
+        <div class="d-flex align-items-start flex-column flex-xl-row">
+          <div class="all-contact pe-xl-3">
+            <div class="inner">
+
+              <div class="contacts-header mb-4">
+                <div id="top-heading" class="top-title">
+                </div>
+                <div class="search-input position-relative">
+                  <span class="position-absolute color-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                  <input type="text"
+                    class="text-size-md bg-white border border-gray-200 rounded-12 w-100 color-gray-700"
+                    placeholder="Search by name, phone, or email..." id="searchInput" oninput="displayContact()" />
+                </div>
+              </div>
+
+              <div class="contact-cards">
+                <div class="row g-3" id="rowData"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="fav-emergency position-sticky ps-xl-3 mt-xl-0">
+            <div class="d-flex flex-column">
+
+              <div class="fav border border-gray-100 bg-white overflow-hidden rounded-4">
+                <div class="header py-3 d-flex align-items-center">
+                  <div class="icon flex-center text-white rounded-3">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div>
+                    <h2 class="fs-6 color-gray-900 fw-semibold m-0">Favorites</h2>
+                    <p class="color-gray-500 m-0">Quick access to starred contacts</p>
+                  </div>
+                </div>
+                <div class="fav-contact overflow-y-auto">
+                  <div class="row" id="favContacts">
+                  </div>
+                </div>
+              </div>
+
+              <div class="emergency border border-gray-100 bg-white overflow-hidden rounded-4">
+                <div class="header py-3 d-flex align-items-center">
+                  <div class="icon flex-center text-white rounded-3">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                  </div>
+                  <div>
+                    <h2 class="fs-6 color-gray-900 fw-semibold m-0">Emergency</h2>
+                    <p class="color-gray-500 m-0">Important contacts for urgent calls</p>
+                  </div>
+                </div>
+                <div class="emergency-contact overflow-y-auto">
+                  <div class="row" id="emergencyContacts">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <form id="contactForm" class="form-container position-fixed z-3 top-0 bottom-0 w-100 d-none">
+    <div class="blur-bg w-100 h-100"></div>
+    <div class="flex-center position-fixed top-0 bottom-0 w-100 p-3">
+      <div class="main-form bg-white overflow-y-auto rounded-4 w-100">
+
+        <div
+          class="heading bg-white position-sticky top-0 border-bottom border-gray-100 py-3 px-4 d-flex align-items-center justify-content-between">
+          <h2 class="fw-bold text-size-xl color-gray-900 m-0">Add New Contact</h2>
+          <button id="closeForm" onclick="closeFormFun()" type="button"
+            class="bg-transparent p-0 rounded-3 color-gray-400 text-size-lg" style="--bs-btn-close-focus-shadow: none">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="p-4">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="image-input-container pb-2 flex-column flex-center">
+                <div class="profile rounded-circle fw-bold flex-center text-white overflow-hidden"
+                  id="image-profile-icon">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <label for="imageInput"
+                  class="bg-gray-100 color-gray-700 text-size-md flex-center fw-medium rounded-3 py-2 px-3 gap-2">
+                  <span class="color-gray-500"> <i class="fa-solid fa-camera"></i> </span>
+                  <span>Change Photo</span>
+                  <input class="form-control d-none" onChange="displayImage(); validation(this, 'msgImage')" type="file"
+                    id="imageInput" accept="image/*" />
+                </label>
+                <p id="msgImage" class="valid-msg d-none color-rose-500 text-size-sm mb-0">
+                    Please select a valid image
+                  </p>
+              </div>
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="fullName" class="text-size-md fw-medium color-gray-700">
+                Full Name <span class="color-rose-500">*</span>
+              </label>
+              <input type="text" oninput="validation(this , 'msgName')"
+                class="form-control px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md" id="fullName"
+                placeholder="Enter full name" />
+              <p id="msgName" class="valid-msg d-none color-rose-500 text-size-sm mb-0">Name should contain only letters
+                and spaces (2-50 characters)</p>
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="phoneInput" class="text-size-md fw-medium color-gray-700">
+                Phone Number <span class="color-rose-500">*</span>
+              </label>
+              <input type="tel" oninput="validation(this,'msgPhone')"
+                class="form-control px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md" id="phoneInput"
+                placeholder="e.g., 01012345678" />
+              <p id="msgPhone" class="valid-msg d-none color-rose-500 text-size-sm mb-0">Please enter a valid Egyptian
+                phone number</p>
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="emailInput" class="text-size-md fw-medium color-gray-700">Email Address</label>
+              <input type="email" oninput="validation(this,'msgEmail')"
+                class="form-control px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md" id="emailInput"
+                placeholder="name@example.com" />
+              <p id="msgEmail" class="valid-msg d-none color-rose-500 text-size-sm mb-0">Please enter a valid email
+                address</p>
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="addressInput" class="text-size-md fw-medium color-gray-700">Address</label>
+              <input type="text" class="form-control px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md"
+                id="addressInput" placeholder="Enter address" />
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="group" class="text-size-md fw-medium color-gray-700">Group</label>
+              <select id="group" class="form-select px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md"
+                style="--bs-form-select-bg-img: none" aria-label="Default select">
+                <option selected value="">Select a group</option>
+                <option value="Family">Family</option>
+                <option value="Friends">Friends</option>
+                <option value="Work">Work</option>
+                <option value="School">School</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="col-12 mb-20 mt-0">
+              <label for="noteInput" class="text-size-md fw-medium color-gray-700">Notes</label>
+              <textarea name="note" id="noteInput"
+                class="form-control px-3 border border-gray-200 bg-gray-50 rounded-12 text-size-md"
+                placeholder="Add notes about this contact" rows="2"></textarea>
+            </div>
+            <div class="col-4 flex-grow-1 flex-sm-grow-0 mb-20 mt-0 py-2">
+              <div class="d-flex check-input-label align-items-center">
+                <input class="form-check-input custom-check color-violet-600 me-2" type="checkbox" value="Favorite"
+                  id="favChecked" />
+                <label class="form-check-label" for="favChecked">
+                  <span class="text-size-md fw-medium color-gray-600 flex-center">
+                    <i class="fa-solid fa-star color-amber-400 me-1"></i>
+                    Favorite
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="col-4 flex-grow-1 flex-sm-grow-0 mb-20 mt-0 py-2">
+              <div class="d-flex check-input-label align-items-center">
+                <input class="form-check-input custom-check color-violet-600 me-2" type="checkbox" value="Emergency"
+                  id="emergencyChecked" />
+                <label class="form-check-label" for="emergencyChecked">
+                  <span class="text-size-md fw-medium color-gray-600 flex-center">
+                    <i class="fa-solid fa-heart-pulse color-rose-500 me-1"></i>
+                    Emergency
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="col-6 pt-2 mt-0">
+              <button onclick="closeFormFun()" type="button"
+                class="w-100 cancel bg-gray-100 color-gray-700 text-size-md fw-semibold rounded-12">
+                Cancel
+              </button>
+            </div>
+            <div class="col-6 pt-2 mt-0">
+              <button id="addBtn" type="submit" class="w-100 add text-white text-size-md fw-semibold rounded-12">
+                <i class="fa-solid fa-check"></i>
+                Save Contact
+              </button>
+
+              <button id="updateBtn" type="submit"
+                class="d-none w-100 add text-white text-size-md fw-semibold rounded-12">
+                <i class="fa-solid fa-check"></i>
+                Save Contact
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+  <script src="js/all.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>
