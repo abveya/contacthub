@@ -357,10 +357,10 @@ function displayFav() {
         if (allContacts[i].favorite) {
             container += ` <div class="col-xl-12 col-md-6">
                         <div class="contact d-flex align-items-center bg-gray-50 rounded-12">
-                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden">
+                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden flex-shrink-0 ">
                             ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `${mainName}`}
                             </div>
-                        <div class="flex-grow-1">
+                        <div class="flex-grow-1 text-truncate">
                             <h3 class="text-truncate color-gray-900 text-size-md fw-medium m-0">
                             ${allContacts[i].name}
                             </h3>
@@ -422,7 +422,7 @@ function displayEmergency() {
             container += `  
             <div class="col-xl-12 col-md-6">
                         <div class="contact d-flex align-items-center bg-gray-50 rounded-12">
-                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden">
+                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden flex-shrink-0 ">
                                 ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `${mainName}`}
                             </div>
                             <div class="flex-grow-1 text-truncate">
