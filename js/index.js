@@ -70,6 +70,15 @@ function validation(input, msg) {
         input.classList.remove("invalid-input");
         return true;
     }
+
+    if (input.id == "emailInput") {
+        if (input.value.trim() === "") {
+            msgId.classList.add("d-none");
+            input.classList.remove("invalid-input");
+            return true;
+        }
+    }
+
     if (input.value.trim() == "" || regex[input.id].test(input.value.trim()) == false) {
         msgId.classList.remove("d-none");
         input.classList.add("invalid-input");
@@ -150,7 +159,7 @@ function addContact() {
     emergencyContact();
     totalContact();
 }
-contactForm.addEventListener("submit", function(e) {
+contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     if (updateBtn.classList.contains("d-none")) {
         addContact();
