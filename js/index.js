@@ -252,11 +252,12 @@ function displayContact() {
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-loc-email">
                             ${allContacts[i].email
                     ? `<div class="email d-flex align-items-center gap-2">
-                                <div class="icon flex-shrink-0 flex-center rounded-3 bg-violet-100 color-violet-600">
+                                <span class="icon flex-shrink-0 flex-center rounded-3 bg-violet-100 color-violet-600">
                                     <i class="fa-solid fa-envelope"></i>
-                                </div>
+                                </span>
                                 <span class="color-gray-500 text-size-md text-truncate">
                                     ${allContacts[i].email}
                                     </span>
@@ -265,15 +266,15 @@ function displayContact() {
                 }
                             ${allContacts[i].address
                     ? `<div class="address mt-2 d-flex align-items-center gap-2">
-                                <div class="icon flex-shrink-0 flex-center rounded-3 bg-emerald-100 color-emerald-600">
+                                <span class="icon flex-shrink-0 flex-center rounded-3 bg-emerald-100 color-emerald-600">
                                     <i class="fa-solid fa-location-dot"></i>
-                                </div>
+                                </span>
                                 <span class="color-gray-500 text-size-md text-truncate">
                                     ${allContacts[i].address}
                                 </span>
                             </div>`
                     : ""
-                }
+                }</div>
                             <div class="badges">
                             ${allContacts[i].emergency
                     ? `<span class="d-inline-block flex-center bg-rose-50 color-rose-600 fw-medium rounded-3 py-1 px-2">

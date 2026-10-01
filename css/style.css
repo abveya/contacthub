@@ -587,8 +587,12 @@ main .main-contact .all-contact .contact-cards .details .details-top .profile-ic
     right: -.5px;
 }
 
-main .main-contact .all-contact .contact-cards .details .email {
+main .main-contact .all-contact .contact-cards .details .card-loc-email {
     margin-top: .75rem;
+}
+
+main .main-contact .all-contact .contact-cards .details .card-loc-email div:first-child{
+    margin-bottom: .5rem;
 }
 
 main .main-contact .all-contact .contact-cards .details .address .icon,
