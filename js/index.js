@@ -228,13 +228,13 @@ function displayContact() {
                                         ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `<span class="text-size-lg text-white fw-semibold">${mainName}</span>`}
                                     </div>
                                     ${allContacts[i].favorite
-                    ? `<span class="position-absolute bg-amber-400 rounded-circle flex-center fav text-white">
+                    ? `<span class="position-absolute bg-amber-400 rounded-circle flex-center fav text-white badge-profile-icon">
                                         <i class="fa-solid fa-star"></i>
                                     </span>`
                     : ""
                 }
                                     ${allContacts[i].emergency
-                    ? `<span class="position-absolute bg-rose-500 rounded-circle flex-center emergency text-white">
+                    ? `<span class="position-absolute bg-rose-500 rounded-circle flex-center emergency text-white badge-profile-icon">
                                         <i class="fa-solid fa-heart-pulse"></i>
                                     </span>`
                     : ""

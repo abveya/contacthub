@@ -569,7 +569,7 @@ main .main-contact .all-contact .contact-cards .details .details-top .profile-ic
     margin-right: .875rem;
 }
 
-main .main-contact .all-contact .contact-cards .details .details-top .profile-icons span {
+main .main-contact .all-contact .contact-cards .details .details-top .profile-icons span.badge-profile-icon {
     box-shadow: 0 0 0 2px white;
     width: 20px;
     height: 20px;
