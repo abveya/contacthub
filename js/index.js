@@ -11,7 +11,6 @@ var emergencyCheckInput = document.getElementById("emergencyChecked");
 var searchInput = document.getElementById("searchInput");
 var addBtn = document.getElementById("addBtn");
 var updateBtn = document.getElementById("updateBtn");
-
 var allContacts = [];
 var mainIndex;
 if (localStorage.getItem("contacts")) {
@@ -70,7 +69,6 @@ function validation(input, msg) {
         input.classList.remove("invalid-input");
         return true;
     }
-
     if (input.id == "emailInput") {
         if (input.value.trim() === "") {
             msgId.classList.add("d-none");
@@ -78,7 +76,6 @@ function validation(input, msg) {
             return true;
         }
     }
-
     if (input.value.trim() == "" || regex[input.id].test(input.value.trim()) == false) {
         msgId.classList.remove("d-none");
         input.classList.add("invalid-input");
@@ -274,7 +271,8 @@ function displayContact() {
                                 </span>
                             </div>`
                     : ""
-                }</div>
+                }
+                </div>
                             <div class="badges">
                             ${allContacts[i].emergency
                     ? `<span class="d-inline-block flex-center bg-rose-50 color-rose-600 fw-medium rounded-3 py-1 px-2">
@@ -629,4 +627,3 @@ function totalContact() {
                 Manage and organize your ${total} contacts
                 </p>`
 }
-
