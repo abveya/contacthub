@@ -224,8 +224,8 @@ function displayContact() {
                         <div class="details px-3 flex-grow-1">
                             <div class="details-top d-flex align-items-start">
                                 <div class="profile-icons position-relative">
-                                    <div class="profile ${profileBg} text-size-lg flex-center rounded-12 text-white fw-semibold overflow-hidden">
-                                        ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `${mainName}`}
+                                    <div class="profile ${profileBg} flex-center rounded-12 overflow-hidden">
+                                        ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `<span class="text-size-lg text-white fw-semibold">${mainName}</span>`}
                                     </div>
                                     ${allContacts[i].favorite
                     ? `<span class="position-absolute bg-amber-400 rounded-circle flex-center fav text-white">
@@ -366,8 +366,8 @@ function displayFav() {
         if (allContacts[i].favorite) {
             container += ` <div class="col-xl-12 col-md-6">
                         <div class="contact d-flex align-items-center bg-gray-50 rounded-12">
-                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden flex-shrink-0 ">
-                            ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `${mainName}`}
+                            <div class="profile ${profileBg} flex-center rounded-12 overflow-hidden flex-shrink-0 ">
+                            ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `<span class="text-size-md text-white fw-semibold">${mainName}</span>`}
                             </div>
                         <div class="flex-grow-1 text-truncate">
                             <h3 class="text-truncate color-gray-900 text-size-md fw-medium m-0">
@@ -431,8 +431,8 @@ function displayEmergency() {
             container += `  
             <div class="col-xl-12 col-md-6">
                         <div class="contact d-flex align-items-center bg-gray-50 rounded-12">
-                            <div class="profile ${profileBg} text-size-md flex-center rounded-12 text-white fw-semibold overflow-hidden flex-shrink-0 ">
-                                ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `${mainName}`}
+                            <div class="profile ${profileBg} flex-center rounded-12 overflow-hidden flex-shrink-0 ">
+                                ${allContacts[i].image ? `<img src="images/${allContacts[i].image}" class="w-100 h-100 object-fit-cover" />` : `<span class="text-size-md text-white fw-semibold">${mainName}</span>`}
                             </div>
                             <div class="flex-grow-1 text-truncate">
                                 <h3 class="text-truncate color-gray-900 text-size-md fw-medium m-0">
@@ -628,3 +628,4 @@ function totalContact() {
                 Manage and organize your ${total} contacts
                 </p>`
 }
+
