@@ -108,8 +108,8 @@ function addContact() {
         return;
     } else if (!validation(emailInput, "msgEmail")) {
         Swal.fire({
-            title: "Missing Email",
-            text: "Please enter a email for the contact!",
+            title: "Invalid Email",
+            text: "Please enter a valid email address",
             icon: "error"
         });
         return;
