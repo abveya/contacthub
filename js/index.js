@@ -52,7 +52,7 @@ function validation(input, msg) {
     var msgId = document.getElementById(msg);
     var regex = {
         fullName: /^[A-Za-z\s]{2,50}$/,
-        phoneInput: /^01(2|5|0|1)[0-9]{8}$/,
+        phoneInput: /^(01[0125][0-9]{8}|\+201[0125][0-9]{8})$/,
         emailInput: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
         imageInput: /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/i
     };
@@ -113,10 +113,18 @@ function addContact() {
             icon: "error"
         });
         return;
-    } else if (!validation(phoneInput, "msgPhone")) {
+    } else if (phoneInput.value.trim() === "") {
         Swal.fire({
             title: "Missing Phone",
             text: "Please enter a phone for the contact!",
+            icon: "error"
+        });
+        return;
+    } else if (!validation(phoneInput, "msgPhone")) {
+
+        Swal.fire({
+            title: "Invalid Phone",
+            text: "Please enter a valid Egyptian phone number (e.g., 01012345678 or +201012345678)",
             icon: "error"
         });
         return;
